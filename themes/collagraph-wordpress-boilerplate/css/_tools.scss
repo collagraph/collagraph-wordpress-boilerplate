@@ -1,0 +1,71 @@
+/* -------------------------------------------------------------------------------
+ * collapsible content
+ *
+ * https://github.com/filamentgroup/jQuery-Collapsible-Content
+ * -------------------------------------------------------------------------------*/
+
+.collapsible-header {
+    cursor: pointer;
+}
+.collapsible-content { overflow:hidden; }
+.collapsible-content-collapsed { display:none; }
+
+/* -------------------------------------------------------------------------------
+ *  fancybox
+ *
+ * http://fancyapps.com/fancybox/
+ * -------------------------------------------------------------------------------*/
+
+@import "jquery.fancybox";
+
+.fancybox-nav {
+    width: 60px;
+}
+
+.fancybox-nav span,
+.fancybox-close {
+    visibility: visible;
+    opacity: 0.5;
+}
+
+.fancybox-nav:hover span,
+.fancybox-close:hover {
+    opacity: 1;
+}
+
+.fancybox-next {
+    right: -60px;
+}
+
+.fancybox-prev {
+    left: -60px;
+}
+
+.fancybox-opened .fancybox-skin {
+    -webkit-box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
+}
+
+.fancybox-title-over-wrap {
+    background: #fff;
+}
+
+.fancybox-overlay {
+    background-image: none;
+    background-color: rgba(255, 255, 255, .9);
+}
+
+.fancybox-close {
+    right: -44px;
+    top: -2px;
+}
+
+.collapsible-heading-status {
+    display: block;
+    float: right;
+    margin-top: 0.17em;
+    text-transform: lowercase;
+    font-style: italic;
+    font-family: $stack-serif;
+}

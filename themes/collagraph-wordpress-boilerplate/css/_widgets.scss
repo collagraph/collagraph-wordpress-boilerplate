@@ -1,0 +1,35 @@
+/* -------------------------------------------------------------------------------
+ * widgets
+ * -------------------------------------------------------------------------------*/
+
+[role="complementary"] {
+    @include clearfix;
+    font-family: $stack-sans;
+
+    > div {
+        @include rem(margin-top, $scale-4);
+        @include rem(padding, $scale-0);
+
+        border: 1px solid lighten($colour-discreet, 25%);
+
+        @include breakpoint($m) {
+            margin-top: 0;
+        }
+
+        + div {
+            @include breakpoint($m){
+                @include rem(margin-top, $scale-4);
+            }
+        }
+
+        h3 {
+            margin-top: 0;
+            padding-top: 0;
+        }
+    }
+
+    .widget_search {
+        padding: 0;
+        border: none;
+    }
+}

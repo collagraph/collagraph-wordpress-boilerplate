@@ -1,0 +1,595 @@
+/* -------------------------------------------------------------------------------
+ * typebase
+ * -------------------------------------------------------------------------------*/
+
+@mixin typebase {
+    @include rem(font-size, $scale-0);
+    line-height: 1.618;
+}
+
+$stack-sans: helvetica, arial, 'roboto', sans-serif;
+$stack-serif: georgia, serif;
+
+/* -------------------------------------------------------------------------------
+ * mozilla
+ * -------------------------------------------------------------------------------*/
+
+// remove text-shadow from selection (accessibility issue)
+::-moz-selection {
+    background: ($colour-primary, 10%);
+    color: #000; text-shadow: none;
+}
+
+::selection {
+    background: lighten($colour-primary, 10%);
+    color: #000;
+    text-shadow: none;
+}
+
+ins {
+    background-color: lighten($colour-primary, 10%);
+    color: $colour-discreet;
+    text-decoration: none;
+}
+
+mark {
+    background-color: lighten($colour-primary, 10%);
+    color: $colour-discreet;
+    font-weight: bold;
+    font-style: italic;
+}
+
+// mozilla dosen't style place holders by default
+input:-moz-placeholder {
+    color: $colour-discreet;
+}
+
+textarea:-moz-placeholder {
+    color: $colour-discreet;
+}
+
+/* -------------------------------------------------------------------------------
+ * type
+ * -------------------------------------------------------------------------------*/
+
+body {
+    @include clearfix;
+    @include typebase;
+
+    background-color: $colour-background;
+    color: $colour-main;
+    font-weight: normal;
+    font-family: $stack-serif;
+    text-rendering: optimizeLegibility;
+
+    // javascript mediaqueries
+    &:after {
+        @include breakpoint($s) {
+            display: none;
+            content: 's';
+        }
+    }
+}
+
+a {
+    color: darken($colour-primary, 10%);
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        color: $colour-complementary;
+    }
+
+    &:active {
+        color: $colour-main;
+    }
+
+    .h-entry .p-name & {
+        &:hover, &:focus {
+            color: $colour-complementary;
+        }
+    }
+
+    &.long-url {
+        word-break: break-word;
+    }
+}
+
+h1 {
+    @include rem(font-size, $scale-3);
+
+    font-weight: bold;
+    font-family: $stack-sans;
+    line-height: 1.2;
+
+    @include breakpoint($s) {
+        @include rem(font-size, $scale-4);
+    }
+
+    // only add margin/padding when not the first element in a container
+    * + & {
+        @include rem(margin-top, $scale-2);
+        @include rem(padding-top, $scale-0);
+    }
+}
+
+h2 {
+    @include rem(font-size, $scale-2);
+
+    color: darken($colour-complementary, 10%);
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-family: $stack-sans;
+
+    // only add margin/padding when not the first element in a container
+    * + & {
+        @include rem(margin-top, $scale-2);
+        @include rem(padding-top, $scale-0);
+    }
+}
+
+h3 {
+    font-weight: bold;
+    font-family: $stack-sans;
+
+    // only add margin/padding when not the first element in a container
+    * + & {
+        @include rem(margin-top, $scale-1);
+        @include rem(padding-top, $scale-0);
+    }
+}
+
+h4, h5, h6 {
+    // only add margin/padding when not the first element in a container
+    * + & {
+        @include rem(margin-top, $scale-0);
+        @include rem(padding-top, $scale-0);
+    }
+}
+
+h4 {
+    font-weight: bold;
+    font-style: italic;
+    font-family: $stack-serif;
+}
+
+h5 {
+    text-decoration: underline;
+    font-weight: normal;
+    font-style: italic;
+    font-family: $stack-serif;
+}
+
+h6 {
+    @include rem(font-size, $scale-n1);
+
+    text-transform: uppercase;
+    font-family: $stack-sans;
+}
+
+p,
+ul,
+ol,
+dl,
+figure,
+blockquote {
+    // only add margin when not the first element in a container
+    * + & {
+        @include rem(margin-top, $scale-1);
+    }
+}
+
+blockquote {
+    @include rem(padding, 0, $scale-1);
+
+    color: $colour-primary;
+    font-style: italic;
+}
+
+ul, ol {
+    @include rem(padding-left, $scale-1);
+
+    list-style-position: outside;
+}
+
+ul {
+    list-style-type: disc;
+}
+
+dl {
+    @include clearfix;
+}
+
+dt {
+    @include rem(font-size, $scale-1);
+
+    font-weight: bold;
+    font-family: $stack-sans;
+
+    dd + & {
+        @include rem(margin-top, $scale-0);
+    }
+}
+
+dd {
+    @include rem(margin-left, $scale-1);
+}
+
+.primary {
+    @include clearfix;
+
+    @include breakpoint($m) {
+        @include grid-5(3, 2);
+        float: left;
+        clear: left;
+        margin-right: $grid-5-gutter;
+    }
+
+    @include breakpoint($l) {
+        @include grid-5(3, 2);
+    }
+}
+
+.reading {
+    @include breakpoint($s) {
+        @include rem(font-size, $scale-1);
+    }
+
+    @include breakpoint($m) {
+        @include rem(font-size, $scale-0);
+    }
+
+    @include breakpoint($l) {
+        @include rem(font-size, $scale-1);
+    }
+
+    .e-content > p:first-child {
+        @include rem(font-size, $scale-1);
+
+        @include breakpoint($s) {
+            @include rem(font-size, $scale-2);
+        }
+
+        @include breakpoint($m) {
+            @include rem(font-size, $scale-1);
+        }
+
+        @include breakpoint($l) {
+            @include rem(font-size, $scale-2);
+        }
+    }
+}
+
+.discreet {
+    color: $colour-discreet;
+}
+
+.index-title {
+    @extend h2;
+}
+
+.photo {
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+    + .p-name {
+        margin-top: 0;
+    }
+}
+
+* + .h-entry {
+    @include rem(margin-top, $scale-2);
+
+    @include breakpoint($s) {
+        @include rem(margin-top, $scale-4);
+    }
+}
+
+.p-summary,
+.e-content {
+    @include rem(margin-top, $scale-1);
+}
+
+.e-content img {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.post-intro-meta {
+    display: block;
+    border-color: $colour-contrast;
+    color: $colour-discreet;
+    font-family: $stack-sans;
+
+    p {
+        margin-top: 0;
+    }
+}
+
+.post-meta {
+    @include rem(margin-top, $scale-2);
+
+    h2 {
+        @include typebase;
+
+        display: inline-block;
+        margin-top: 0;
+        color: $colour-main;
+        letter-spacing: 0;
+        font-weight: bold;
+    }
+
+    a {
+        color: $colour-access;
+
+        &:hover, &:focus {
+            color: darken($colour-access, 25%);
+        }
+
+        &:active {
+            color: lighten($colour-access, 10%);
+        }
+    }
+
+    > div + div {
+        @include rem(margin-top, $scale-0);
+    }
+
+    ul {
+        display: inline;
+        padding-left: 0;
+        list-style: none;
+    }
+
+    li {
+        display: inline-block;
+
+        &:after {
+            @include rem(padding, 0, $scale-n4, $scale-n5);
+            color: darken($colour-contrast, 10%);
+            content: "\25CF";
+            vertical-align: middle;
+        }
+
+        &:first-child:before {
+            @include rem(padding, 0, $scale-n4, $scale-n5, 0);
+            content: "";
+        }
+
+        &:last-child:after {
+            padding: 0;
+            content: "";
+        }
+    }
+}
+
+.post-sub-list time {
+    @include rem(font-size, $scale-0);
+
+    display: block;
+    color: $colour-discreet;
+    font-family: $stack-sans;
+
+    @include breakpoint($s) {
+        @include rem(font-size, $scale-1);
+    }
+
+    @include breakpoint($m) {
+        @include rem(font-size, $scale-0);
+    }
+
+    @include breakpoint($l) {
+        @include rem(font-size, $scale-1);
+    }
+}
+
+.comments-area {
+    @include rem(margin-top, $scale-4);
+    @include rem(padding-top, $scale-1);
+
+    @include rem(border-top-width, $scale-n4);
+    border-top-style: solid;
+    border-top-color: $colour-primary;
+
+    @include breakpoint($s) {
+        @include rem(margin-top, $scale-5);
+    }
+
+    h2 {
+        margin-top: 0;
+        padding-top: 0;
+    }
+}
+
+.comments-list {
+    padding-left: 0;
+    list-style-type: none;
+
+    .comment-author img {
+        @include rem(width, $scale-4);
+        margin: 0;
+        height: auto;
+    }
+
+    .fn {
+        display: block;
+    }
+
+    .says {
+        display: none;
+    }
+
+    .comment-meta {
+        @include rem(font-size, $scale-n1);
+    }
+
+    .reply {
+        @include rem(font-size, $scale-n1);
+        font-style: italic;
+        font-family: $stack-serif;
+    }
+
+    .comment + .comment {
+        .comment-author img {
+            @include rem(margin-top, $scale-1);
+        }
+    }
+
+    .children {
+        padding: 0;
+        list-style-type: none !important;
+
+        .comment {
+            @include rem(border-left-width, $scale-n5);
+            @include rem(margin, $scale-0, 0);
+            @include rem(padding-left, $scale-0);
+            border-style: solid;
+            border-color: $colour-primary;
+
+            .comment {
+                border-color: lighten($colour-primary, 25%);
+
+                .comment {
+                    border-color: lighten($colour-primary, 50%);
+                }
+            }
+        }
+    }
+}
+
+.comment-respond {
+    .comments-list + & {
+        @include rem(margin-top, $scale-4);
+        @include rem(padding-top, $scale-1);
+
+        border-top: 1px solid lighten($colour-discreet, 10%);
+    }
+
+    h3 {
+        margin-top: 0;
+        padding-top: 0;
+    }
+}
+
+.to-list {
+    @include rem(font-size, $scale-n1);
+
+    float: right;
+    font-family: $stack-sans;
+
+    .primary & {
+        @include rem(font-size, $scale-1);
+
+        display: inline-block;
+        float: none;
+        font-family: $stack-serif;
+
+        @include breakpoint($s) {
+            @include rem(margin-top, $scale-3);
+        }
+    }
+}
+
+.highlight-link {
+    @include rem(padding, $scale-n4, $scale-0);
+    @include rem(border-radius, 0.25);
+    @include rem(font-size, $scale-n1);
+
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 1px;
+
+    &:hover,
+    &:focus {
+        color: #fff;
+        text-decoration: none;
+    }
+}
+
+.get-content {
+    @extend .highlight-link;
+
+    background-color: $colour-access;
+
+    &:hover, &:focus {
+        background-color: darken($colour-access, 10%);
+    }
+
+    &:active {
+        background-color: lighten($colour-access, 10%);
+    }
+}
+
+.feed-link {
+    @include rem(margin-top, $scale-n4);
+    @include rem(font-size, $scale-n1);
+
+    display: inline-block;
+    float: right;
+    color: lighten($colour-discreet, 25%);
+    font-family: $stack-sans;
+}
+
+.page-nav {
+    @include rem(margin, $scale-2, 0);
+
+    ul {
+        @include clearfix;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-align: center;
+
+        li {
+            @include breakpoint($s) {
+                float: right;
+                clear: right;
+            }
+
+            + li {
+                @include breakpoint($s) {
+                    float: left;
+                    clear: left;
+                }
+            }
+
+            a {
+                @include breakpoint($s) {
+                    @include rem(border-radius, $scale-n4);
+                }
+            }
+        }
+
+        a {
+            @include rem(margin-top, $scale-0);
+            @include rem(border-radius, $scale-n4);
+            @include rem(padding, $scale-n2, $scale-0);
+
+            display: block;
+            border: 1px $colour-primary solid;
+            text-decoration: none;
+
+            @include breakpoint($xs) {
+                @include rem(margin-top, $scale-2);
+            }
+
+            @include breakpoint($s) {
+                @include rem(border-radius, $scale-n4);
+            }
+
+            &:hover,
+            &:focus {
+                background-color: $colour-primary;
+                color: $colour-background;
+            }
+
+            &:active {
+                background-color: darken($colour-primary, 10%);
+            }
+        }
+    }
+}

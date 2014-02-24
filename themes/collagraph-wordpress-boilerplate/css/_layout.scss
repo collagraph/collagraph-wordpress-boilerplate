@@ -1,0 +1,59 @@
+/* -------------------------------------------------------------------------------
+ * layout
+ * -------------------------------------------------------------------------------*/
+
+* {
+    box-sizing: border-box;
+}
+
+.chromeframe {
+    position: absolute; top: 0;
+}
+
+html, body {
+    position: relative;
+    height: 100%;
+}
+
+body {
+    margin: 0 auto;
+}
+
+.site-header,
+.site-footer,
+[role="main"] {
+    @include rem(padding, 0, $scale-0);
+
+    clear: both;
+    width: 100%;
+
+    @include breakpoint($xs) {
+        padding: 0 $site-margin-wide;
+    }
+
+    @include breakpoint($s) {
+        padding: 0 $site-margin-wide;
+    }
+
+    @include breakpoint($m) {
+        padding: 0 $site-margin-thin;
+    }
+
+    @include breakpoint($l) {
+        padding: 0 $site-margin-wide;
+    }
+}
+
+[role="complementary"] {
+    @include clearfix;
+
+    @include breakpoint($m) {
+        @include grid-5(2, 1);
+        float: right;
+        clear: right;
+    }
+
+    @include breakpoint($l) {
+            @include grid-5(2, 1);
+    }
+}

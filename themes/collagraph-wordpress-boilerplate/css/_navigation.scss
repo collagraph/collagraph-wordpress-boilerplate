@@ -1,0 +1,154 @@
+/* -------------------------------------------------------------------------------
+ * navigation
+ * -------------------------------------------------------------------------------*/
+
+.nav {
+    @include rem(margin-top, $scale-5);
+    @include rem(padding-bottom, $scale-5);
+
+    position: relative;
+    bottom: 0;
+    min-height: 100%;
+    background-color: $colour-primary;
+
+    @include breakpoint($m) {
+        position: static;
+        bottom: auto;
+        overflow: hidden;
+        margin-top: 0;
+        padding-bottom: 0;
+        min-height: 0;
+        background-color: transparent;
+    }
+}
+
+.main-nav ul {
+    padding: 0;
+    list-style-type: none;
+
+    @include breakpoint($m) {
+        @include rem(top, $scale-4 + $scale-1 + $scale-n3 + $scale-n5);
+        @include rem(margin-right, -$scale-0);
+
+        position: absolute;
+        right: $site-margin-thin;
+        z-index: 1;
+    }
+
+    @include breakpoint($l) {
+        @include rem(top, $scale-5 + $scale-1 + $scale-n3);
+        right: $site-margin-wide;
+    }
+
+    li {
+        @include breakpoint($m) {
+            float: left;
+            padding: 0;
+        }
+    }
+
+    a {
+        @include rem(padding, $scale-n2, $scale-0);
+
+        display: block;
+        border-bottom: 1px lighten($colour-primary, 10%) solid;
+        background-color: $colour-primary;
+        color: $colour-background;
+        text-decoration: none;
+
+        @include breakpoint($xs) {
+            padding-right: $site-margin-wide;
+            padding-left: $site-margin-wide;
+        }
+
+        @include breakpoint($m) {
+            @include rem(border-radius, $scale-n4);
+            @include rem(padding, $scale-n2, $scale-n3);
+            display: inline-block;
+            border-bottom: none;
+
+            &:hover, &:focus {
+                border-bottom: none;
+            }
+        }
+
+        @include breakpoint($l) {
+            @include rem(font-size, $scale-1);
+            @include rem(padding, $scale-n2, $scale-0);
+        }
+
+        &:hover, &:focus {
+            border-bottom: 1px lighten($colour-primary, 10%) solid;
+            background-color: lighten($colour-primary, 10%);
+            color: $colour-background;
+        }
+
+        &:active {
+            background-color: darken($colour-primary, 10%);
+        }
+    }
+}
+
+.bar {
+    @include clearfix;
+    @include rem(margin-top, -$scale-4);
+    @include rem(padding, $scale-n3, $scale-0);
+
+    position: relative;
+    bottom: 0;
+    overflow: hidden;
+    width: 100%;
+    background-color: darken($colour-primary, 10%);
+
+    @include breakpoint($m) {
+        display: none;
+    }
+}
+
+.nav-btn {
+    @include rem(border-radius, $scale-n4);
+    @include rem(width, $scale-4);
+    @include rem(line-height, $scale-4);
+    @include rem(font-size, $scale-1);
+
+    display: inline-block;
+    float: right;
+    clear: right;
+    background-color: $colour-primary;
+    color: $colour-background;
+    text-align: center;
+    font-family: sans-serif;
+
+    header & {
+        background-color: lighten($colour-primary, 10%);
+        color: $colour-background;
+
+        @include breakpoint($m) {
+            @include visuallyhidden;
+        }
+
+        &:hover,
+        &:focus {
+            background-color: lighten($colour-primary, 25%);
+            color: $colour-background;
+            text-decoration: none;
+        }
+
+        &:active {
+            background-color: darken($colour-primary, 10%);
+            color: lighten($colour-primary, 25%);
+        }
+    }
+
+    &:hover,
+    &:focus {
+        background-color: lighten($colour-primary, 10%);
+        color: $colour-background;
+        text-decoration: none;
+    }
+
+    &:active {
+        background-color: darken($colour-primary, 25%);
+        color: lighten($colour-primary, 10%);
+    }
+}

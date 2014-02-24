@@ -1,0 +1,156 @@
+/* -------------------------------------------------------------------------------
+ * footer
+ * -------------------------------------------------------------------------------*/
+
+.site-footer {
+    display: block;
+    float: none;
+    clear: both;
+    text-align: center;
+
+    @include breakpoint($m) {
+        @include clearfix;
+        @include rem(margin-top, $scale-6);
+        @include rem(padding-top, $scale-2);
+        @include rem(padding-bottom, $scale-2);
+
+        text-align: left;
+    }
+
+    ul {
+        @include rem(margin-top, $scale-0);
+
+        display: block;
+        padding-left: 0;
+        list-style: none;
+        text-align: center;
+
+        @include breakpoint($m) {
+            float: left;
+            margin: 0;
+            text-align: left;
+        }
+    }
+
+    a {
+        @include rem(font-size, $scale-n1);
+
+        color: $colour-background;
+
+        @include breakpoint($m) {
+            color: $colour-primary;
+        }
+
+        &:hover, &:focus {
+            @include breakpoint($m) {
+                color: $colour-complementary;
+            }
+        }
+
+        &:active {
+            @include breakpoint($m) {
+                color: $colour-main;
+            }
+        }
+
+        .icon {
+            @include rem(font-size, $scale-3);
+
+            vertical-align: middle;
+            font-style: normal;
+        }
+    }
+
+    li  {
+        display: inline-block;
+        vertical-align: top;
+
+        &:first-child {
+            @include rem(margin-right, $scale-n2);
+
+            @include breakpoint($m) {
+                @include rem(margin-right, $scale-n4);
+            }
+        }
+
+        a.social {
+            @include rem(width, $scale-4);
+            @include rem(height, $scale-4);
+
+            display: block;
+            border-radius: 50%;
+            background-position: center center;
+            background-size: auto 26px;
+            background-size: auto 1.618rem;
+            background-repeat: no-repeat;
+
+            @include breakpoint($m) {
+                background-color: transparent;
+            }
+
+            &:hover, &:focus {
+                background-color: lighten($colour-primary, 10%);
+
+                @include breakpoint($m) {
+                    background-color: lighten($colour-primary, 25%);
+                }
+            }
+
+            &:active {
+                background-color: darken($colour-primary, 10%);
+
+                @include breakpoint($m) {
+                    background-color: darken($colour-primary, 25%);
+                }
+            }
+        }
+
+        span {
+            @include visuallyhidden;
+        }
+    }
+
+    .license,
+    .contact-link {
+        @include rem(margin-top, $scale-n2);
+        @include rem(font-size, $scale-n1);
+
+        color: $colour-background;
+
+        @include breakpoint($m) {
+            color: $colour-discreet;
+        }
+    }
+
+    .license {
+        @include rem(margin-left, $scale-n3);
+
+        @include breakpoint($m) {
+            display: inline-block;
+        }
+    }
+
+    .makers-mark {
+        @include rem(padding-top, $scale-n2);
+        @include rem(font-size, $scale-n1);
+
+        display: none;
+        float: right;
+        margin: 0;
+        color: $colour-discreet;
+        font-style: italic;
+
+        @include breakpoint($m) {
+            display: inline-block;
+        }
+
+        &:hover,
+        &:focus {
+            color: $colour-complementary;
+        }
+
+        &:active {
+            color: $colour-main;
+        }
+    }
+}

@@ -1,0 +1,22 @@
+/* -------------------------------------------------------------------------------
+ * grids
+ * -------------------------------------------------------------------------------*/
+
+$grids: 2;
+$gutters: ms(0);
+$gutter-styles: 'split';
+
+$grids: add-grid(2 at $xs);
+$gutters: add-gutter(1rem at $xs);
+
+$grids: add-grid(4 at $m);
+$gutters: add-gutter(.15 at $m);
+
+$grids: add-grid(6 at $l);
+$gutters: add-gutter(.2 at $l);
+
+$grids: add-grid(8 at $xl);
+$gutters: add-gutter(.2 at $xl);
+
+// $grids: add-grid(13 at $xxl);
+// $gutters: add-gutter(.2 at $xxl);

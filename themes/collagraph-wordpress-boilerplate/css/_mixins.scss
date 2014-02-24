@@ -1,0 +1,85 @@
+/* -------------------------------------------------------------------------------
+ * rem calculator
+ *
+ * http://css-tricks.com/snippets/css/less-mixin-for-rem-font-sizing
+ * -------------------------------------------------------------------------------*/
+
+@function strip-unit($num) {
+    @return $num / ($num * 0 + 1);
+}
+
+@mixin rem($property, $values...) {
+    $max: length($values);
+    $pxValues: '';
+    $remValues: '';
+
+    @for $i from 1 through $max {
+        $value: strip-unit(nth($values, $i));
+        $pxValues: #{$pxValues + $value * 16}px;
+
+        @if $i < $max {
+            $pxValues: #{$pxValues + " "};
+       }
+   }
+
+    @for $i from 1 through $max {
+        $value: strip-unit(nth($values, $i));
+        $remValues: #{$remValues + $value}rem;
+
+        @if $i < $max {
+            $remValues: #{$remValues + " "};
+       }
+   }
+
+    #{$property}: $pxValues;
+    #{$property}: $remValues;
+}
+
+/* -------------------------------------------------------------------------------
+ * grid
+ *
+ * http://cognition.happycog.com/article/a-simple-grid-mixin-explained
+ * -------------------------------------------------------------------------------*/
+
+/* -------------------------------------------------------------------------------
+ * 5 column grid with 10% gutters
+ * -------------------------------------------------------------------------------*/
+
+$layout-width: 100;
+$grid-5-column: 12;
+$grid-5-gutter: 10;
+
+@mixin grid-5($column-num, $gutter-num) {
+    width: percentage((($grid-5-column * $column-num) + ($grid-5-gutter * $gutter-num)) / $layout-width);
+}
+
+/* -------------------------------------------------------------------------------
+ * clearfix
+ *
+ * http://www.css-101.org/articles/clearfix/latest-new-clearfix-so-far.php
+ * -------------------------------------------------------------------------------*/
+
+@mixin clearfix {
+    &:after {
+        content:"";
+        display:table;
+        clear:both;
+   }
+}
+
+/* -------------------------------------------------------------------------------
+ * visuallyhidden
+ *
+ * hide visually but show in screen-readers etc.
+ * -------------------------------------------------------------------------------*/
+
+@mixin visuallyhidden {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}

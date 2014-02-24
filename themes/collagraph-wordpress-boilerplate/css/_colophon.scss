@@ -1,0 +1,73 @@
+/* -------------------------------------------------------------------------------
+ * colophon
+ * -------------------------------------------------------------------------------*/
+
+.colophon {
+    @include rem(font-size, $scale-n1);
+    text-align: center;
+
+    @include breakpoint($xl) {
+        float: right;
+        clear: right;
+        width: 40%;
+        text-align: right;
+    }
+
+    ul {
+        padding-left: 0;
+    }
+
+    li {
+        @include rem(margin-top, $scale-n2);
+        display: block;
+
+        @include breakpoint($m) {
+            display: inline-block;
+            margin-top: 0;
+
+            + li {
+                @include rem(margin-left, $scale-2);
+            }
+        }
+    }
+
+    a {
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+            color: $colour-main;
+        }
+
+        &:active {
+            color: $colour-spot;
+        }
+    }
+}
+
+// .makers-mark {
+//     text-decoration: none;
+// }
+
+.icon-mark {
+    display: block;
+    float: none;
+    clear: both;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    text-align: center;
+
+    @include breakpoint($xl) {
+         display: none;
+    }
+
+    img {
+        @include rem(width, $scale-6);
+
+        @include breakpoint($xl) {
+            @include rem(width, $scale-5);
+        }
+    }
+}

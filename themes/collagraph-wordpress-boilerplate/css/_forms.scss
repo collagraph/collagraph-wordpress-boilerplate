@@ -1,0 +1,150 @@
+/* -------------------------------------------------------------------------------
+ * forms
+ * -------------------------------------------------------------------------------*/
+
+form {
+    @include clearfix;
+}
+
+button, input, textarea {
+    border-style: solid;
+
+    // stop ios rounding corners
+    appearance: none;
+}
+
+select, input, textarea {
+    @include rem(padding, $scale-n2, $scale-n5);
+    @include typebase;
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: $colour-discreet;
+    background-color: lighten($colour-background, 10%);
+    box-shadow: inset 0 4px 4px $colour-contrast;
+    color: darken($colour-main, 25%);
+
+    &:focus {
+        border-color: darken($colour-discreet, 25%);
+    }
+}
+
+[type="submit"] {
+    @include rem(padding, $scale-0, $scale-n3);
+    @include rem(border-radius, $scale-n4);
+
+    border: 1px solid darken($colour-access, 10%);
+    background-color: $colour-access;
+    background-image: -webkit-gradient(linear, left top, left bottom, from($colour-access), to(darken($colour-access, 10%)));
+    background-image: -webkit-linear-gradient(top, $colour-access, darken($colour-access, 10%));
+    background-image: -moz-linear-gradient(top, $colour-access, darken($colour-access, 10%));
+    background-image: -ms-linear-gradient(top, $colour-access, darken($colour-access, 10%));
+    background-image: -o-linear-gradient(top, $colour-access, darken($colour-access, 10%));
+    background-image: linear-gradient(to bottom, $colour-access, darken($colour-access, 10%));
+    box-shadow: none;
+    text-shadow: -1px -1px 0 darken($colour-background, 50%);
+    font-weight: bold;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=$colour-primary, endColorstr=darken($colour-primary, 10%));
+
+    &:hover, &:focus {
+        border-color: darken($colour-access, 25%);
+        background-color: darken($colour-access, 10%); background-image: -webkit-gradient(linear, left top, left bottom, from(darken($colour-access, 10%)), to(darken($colour-access, 25%)));
+        background-image: -webkit-linear-gradient(top, darken($colour-access, 10%), darken($colour-access, 25%));
+        background-image: -moz-linear-gradient(top, darken($colour-access, 10%), darken($colour-access, 25%));
+        background-image: -ms-linear-gradient(top, darken($colour-access, 10%), darken($colour-access, 25%));
+        background-image: -o-linear-gradient(top, darken($colour-access, 10%), darken($colour-access, 25%));
+        background-image: linear-gradient(to bottom, darken($colour-access, 10%), darken($colour-access, 25%));filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=darken($colour-access, 10%), endColorstr=darken($colour-access, 25%));
+    }
+
+    &:active {
+        border-color: $colour-access;
+        background-color: lighten($colour-access, 10%); background-image: -webkit-gradient(linear, left top, left bottom, from(lighten($colour-access, 10%)), to($colour-access));
+        background-image: -webkit-linear-gradient(top, lighten($colour-access, 10%), $colour-access);
+        background-image: -moz-linear-gradient(top, lighten($colour-access, 10%), $colour-access);
+        background-image: -ms-linear-gradient(top, lighten($colour-access, 10%), $colour-access);
+        background-image: -o-linear-gradient(top, lighten($colour-access, 10%), $colour-access);
+        background-image: linear-gradient(to bottom, lighten($colour-access, 10%), $colour-access);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=lighten($colour-access, 10%), endColorstr=$colour-access);
+    }
+
+    .lt-ie10 &,
+    .lt-ie9 & {
+        @include rem(padding, $scale-n4);
+    }
+}
+
+/* -------------------------------------------------------------------------------
+ * search-form
+ * -------------------------------------------------------------------------------*/
+
+.search-form {
+    @include rem(margin-top, $scale-4);
+
+    @include breakpoint($m) {
+        margin-top: 0;
+    }
+
+    [role="complementary"] > div + & {
+        @include breakpoint($m) {
+            @include rem(margin-top, $scale-4);
+        }
+    }
+
+    input {
+        @include rem(padding-left, $scale-0);
+        @include rem(padding-right, $scale-0);
+
+        @include breakpoint($m) {
+            @include rem(padding-left, $scale-n2);
+            @include rem(padding-right, $scale-n2);
+        }
+    }
+
+    .primary &:first-child {
+        @include rem(margin-bottom, $scale-4);
+    }
+}
+
+.search-input {
+    @include rem(border-radius, 0);
+
+    float: left;
+    width: 68%;
+}
+
+.search-submit {
+    float: right;
+    width: 28%;
+}
+
+.search-term {
+    display: inline-block;
+    color: $colour-complementary;
+}
+
+/* -------------------------------------------------------------------------------
+ * comment-form
+ * -------------------------------------------------------------------------------*/
+
+.comment-form-comment {
+    label {
+        @extend h3;
+
+        display: block;
+
+        &:after {
+            @include rem(font-size, $scale-n1);
+            color: $colour-discreet;
+            font-weight: normal;
+
+            content: " (required)";
+        }
+    }
+
+    textarea {
+        width: 100%;
+    }
+}
+
+.form-allowed-tags {
+    @include rem(font-size, $scale-n1);
+    color: $colour-discreet;
+}

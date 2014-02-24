@@ -1,0 +1,77 @@
+/* -------------------------------------------------------------------------------
+ * header
+ * -------------------------------------------------------------------------------*/
+
+.site-header {
+    @include rem(margin-bottom, $scale-4);
+    @include rem(padding-top, $scale-n3);
+
+    background-color: $colour-primary;
+
+    @include breakpoint($s) {
+        @include rem(margin-bottom, $scale-5);
+    }
+
+    @include breakpoint($m) {
+        @include rem(height, $scale-6 + $scale-4);
+        @include rem(padding-top, $scale-5 - $scale-n3);
+    }
+
+    @include breakpoint($l) {
+        @include rem(height, $scale-6 + $scale-5);
+        @include rem(padding-top, $scale-6 - $scale-3);
+    }
+}
+
+.logo {
+    @include clearfix;
+
+    @include breakpoint($m) {
+        @include rem(margin-top, -$scale-2);
+    }
+
+    a {
+        color: $colour-background;
+
+        &:hover, &:focus {
+            color: darken($colour-primary, 25%);
+        }
+
+        &:active {
+            color: $colour-background;
+        }
+    }
+
+    img {
+        @include rem(height, $scale-4);
+
+        display: inline-block;
+        width: auto;
+
+        @include breakpoint($m) {
+            @include rem(height, $scale-5);
+        }
+    }
+
+    span {
+        @include rem(max-width, $scale-7);
+        @include rem(padding-left, $scale-n1);
+        @include rem(font-size, $scale-0);
+
+        display: inline-block;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-family: $stack-sans;
+        line-height: 1.2;
+
+        @include breakpoint($m) {
+            @include rem(font-size, $scale-2);
+
+            max-width: 100%;
+        }
+
+        @include breakpoint($xl) {
+            @include rem(font-size, $scale-3);
+        }
+    }
+}

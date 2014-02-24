@@ -1,0 +1,25 @@
+/* -------------------------------------------------------------------------------
+ * icons
+ * -------------------------------------------------------------------------------*/
+
+.icon-letter,
+.icon-letter-alt {
+    padding-left: 1.6em;
+    background-size: auto 0.9em;
+    background-position: 0 0.36em;
+}
+
+.icon-case-study {
+    padding-left: 1.6em;
+    background-size: auto 1.2em;
+    background-position: 0 0.22em;
+
+    .single-project & {
+        padding-left: 1.2em;
+        background-position: 0 0.26em;
+    }
+}
+
+.icon-case-study-alt {
+    padding-left: 2.7em;
+}
