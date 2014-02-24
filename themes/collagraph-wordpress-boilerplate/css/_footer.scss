@@ -32,6 +32,15 @@
         }
     }
 
+    li  {
+        display: inline-block;
+        vertical-align: top;
+
+        span {
+            @include visuallyhidden;
+        }
+    }
+
     a {
         @include rem(font-size, $scale-n1);
 
@@ -53,27 +62,7 @@
             }
         }
 
-        .icon {
-            @include rem(font-size, $scale-3);
-
-            vertical-align: middle;
-            font-style: normal;
-        }
-    }
-
-    li  {
-        display: inline-block;
-        vertical-align: top;
-
-        &:first-child {
-            @include rem(margin-right, $scale-n2);
-
-            @include breakpoint($m) {
-                @include rem(margin-right, $scale-n4);
-            }
-        }
-
-        a.social {
+        &.social {
             @include rem(width, $scale-4);
             @include rem(height, $scale-4);
 
@@ -105,8 +94,11 @@
             }
         }
 
-        span {
-            @include visuallyhidden;
+        .icon {
+            @include rem(font-size, $scale-3);
+
+            vertical-align: middle;
+            font-style: normal;
         }
     }
 

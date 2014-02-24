@@ -3,10 +3,12 @@
  * -------------------------------------------------------------------------------*/
 
 .site-header {
-    @include rem(margin-bottom, $scale-4);
+    @include rem(margin-bottom, $scale-3);
     @include rem(padding-top, $scale-n3);
 
-    background-color: $colour-primary;
+    @include rem(border-bottom-width, $scale-n5);
+    border-bottom-color: $colour-primary;
+    border-bottom-style: solid;
 
     @include breakpoint($s) {
         @include rem(margin-bottom, $scale-5);
@@ -27,18 +29,21 @@
     @include clearfix;
 
     @include breakpoint($m) {
-        @include rem(margin-top, -$scale-2);
+        @include rem(margin-top, -2.08);
+        @include rem(padding, $scale-n2, $scale-n3);
+    }
+
+    @include breakpoint($l) {
+        @include rem(padding, $scale-n2, $scale-0);
     }
 
     a {
-        color: $colour-background;
-
         &:hover, &:focus {
-            color: darken($colour-primary, 25%);
+            color: lighten($colour-primary, 10%);
         }
 
         &:active {
-            color: $colour-background;
+            color: darken($colour-primary, 10%);
         }
     }
 

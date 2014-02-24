@@ -8,11 +8,12 @@
 
     // representative images of a specific aspect ratio
     /*
-    if ($picturefill['sizes']['rep-l-height'] == 840):
+    // check heights against pre-defined heights in functions.php
+    if ($picturefill['sizes']['rep-l-height'] == 900):
         $l_image = $picturefill['sizes']['rep-l'];
         $m_image = $picturefill['sizes']['rep-m'];
         $s_image = $picturefill['sizes']['rep-s'];
-    elseif ($picturefill['sizes']['rep-m-height'] == 840):
+    elseif ($picturefill['sizes']['rep-m-height'] == 600):
         $l_image = $picturefill['sizes']['rep-m'];
         $m_image = $picturefill['sizes']['rep-m'];
         $s_image = $picturefill['sizes']['rep-s'];

@@ -9,7 +9,6 @@
     position: relative;
     bottom: 0;
     min-height: 100%;
-    background-color: $colour-primary;
 
     @include breakpoint($m) {
         position: static;
@@ -42,8 +41,14 @@
 
     li {
         @include breakpoint($m) {
+            @include rem(padding-left, $scale-n5);
+
             float: left;
-            padding: 0;
+        }
+
+        &.current-menu-item a {
+            background-color: darken($colour-primary, 10%);
+            color: $colour-background;
         }
     }
 
@@ -52,9 +57,17 @@
 
         display: block;
         border-bottom: 1px lighten($colour-primary, 10%) solid;
-        background-color: $colour-primary;
-        color: $colour-background;
         text-decoration: none;
+
+        &:hover, &:focus {
+            border-bottom: 1px lighten($colour-primary, 10%) solid;
+            background-color: lighten($colour-primary, 10%);
+            color: $colour-background;
+        }
+
+        &:active {
+            background-color: darken($colour-primary, 10%);
+        }
 
         @include breakpoint($xs) {
             padding-right: $site-margin-wide;
@@ -75,16 +88,6 @@
         @include breakpoint($l) {
             @include rem(font-size, $scale-1);
             @include rem(padding, $scale-n2, $scale-0);
-        }
-
-        &:hover, &:focus {
-            border-bottom: 1px lighten($colour-primary, 10%) solid;
-            background-color: lighten($colour-primary, 10%);
-            color: $colour-background;
-        }
-
-        &:active {
-            background-color: darken($colour-primary, 10%);
         }
     }
 }

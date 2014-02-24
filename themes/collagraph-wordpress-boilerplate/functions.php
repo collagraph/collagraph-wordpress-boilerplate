@@ -28,7 +28,7 @@ remove_action('wp_head', 'wlwmanifest_link'); // display the link to the windows
 remove_action('wp_head', 'index_rel_link'); // index link
 remove_action('wp_head', 'parent_post_rel_link', 10, 0); // prev link
 remove_action('wp_head', 'start_post_rel_link', 10, 0); // start link
-remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0); // Display relational links for the posts adjacent to the current post
+remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0); // display relational links for the posts adjacent to the current post
 remove_action('wp_head', 'wp_generator'); // display the xhtml generator that is generated on the wp_head hook, wp version
 remove_action('wp_head', 'start_post_rel_link', 10, 0);
 remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
@@ -42,7 +42,7 @@ add_filter('widget_text', 'collagraph_do_shortcode'); // allow shortcodes in dyn
 add_filter('widget_text', 'shortcode_unautop'); // remove <p> tags in dynamic sidebars (better!)
 add_filter('wp_nav_menu_args', 'collagraph_wp_nav_menu_args'); // remove surrounding <div> from wp navigation
 add_filter('nav_menu_css_class', 'collagraph_css_attributes_filter', 100, 1); // remove navigation <li> injected classes (commented out by default)
-add_filter('nav_menu_item_id', 'collagraph_css_attributes_filter', 100, 1); // remove navigation <li> injected id (commented out by default)
+// add_filter('nav_menu_item_id', 'collagraph_css_attributes_filter', 100, 1); // remove navigation <li> injected id (commented out by default)
 add_filter('page_css_class', 'collagraph_css_attributes_filter', 100, 1); // remove navigation <li> page id's (commented out by default)
 add_filter('the_category', 'collagraph_remove_category_rel_from_category_list'); // remove invalid rel attribute
 add_filter('the_excerpt', 'shortcode_unautop'); // remove auto <p> tags in excerpt (manual excerpts only)
@@ -132,7 +132,7 @@ add_filter('jpeg_quality', create_function('', 'return 80;'));
 function collagraph_nav() {
     wp_nav_menu(
         array(
-            'theme_location' => 'header-menu',
+            'theme_location' => 'menu-header',
             'menu' => '',
             'container' => 'div',
             'container_class' => '{menu slug}-container',
@@ -171,7 +171,7 @@ function collagraph_wp_nav_menu_args($args = '') {
 
 // remove injected classes, ids and page ids from navigation <li> items
 function collagraph_css_attributes_filter($var) {
-    return is_array($var) ? array(): '';
+    return is_array($var) ? array_intersect($var, array('current-menu-item')) : '';
 }
 
 /* -------------------------------------------------------------------------------

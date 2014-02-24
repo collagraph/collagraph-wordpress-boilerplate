@@ -42,20 +42,11 @@ select, input, textarea {
     background-image: -o-linear-gradient(top, $colour-access, darken($colour-access, 10%));
     background-image: linear-gradient(to bottom, $colour-access, darken($colour-access, 10%));
     box-shadow: none;
+    color: $colour-background;
     text-shadow: -1px -1px 0 darken($colour-background, 50%);
     font-weight: bold;filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=$colour-primary, endColorstr=darken($colour-primary, 10%));
 
     &:hover, &:focus {
-        border-color: darken($colour-access, 25%);
-        background-color: darken($colour-access, 10%); background-image: -webkit-gradient(linear, left top, left bottom, from(darken($colour-access, 10%)), to(darken($colour-access, 25%)));
-        background-image: -webkit-linear-gradient(top, darken($colour-access, 10%), darken($colour-access, 25%));
-        background-image: -moz-linear-gradient(top, darken($colour-access, 10%), darken($colour-access, 25%));
-        background-image: -ms-linear-gradient(top, darken($colour-access, 10%), darken($colour-access, 25%));
-        background-image: -o-linear-gradient(top, darken($colour-access, 10%), darken($colour-access, 25%));
-        background-image: linear-gradient(to bottom, darken($colour-access, 10%), darken($colour-access, 25%));filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=darken($colour-access, 10%), endColorstr=darken($colour-access, 25%));
-    }
-
-    &:active {
         border-color: $colour-access;
         background-color: lighten($colour-access, 10%); background-image: -webkit-gradient(linear, left top, left bottom, from(lighten($colour-access, 10%)), to($colour-access));
         background-image: -webkit-linear-gradient(top, lighten($colour-access, 10%), $colour-access);
@@ -63,6 +54,16 @@ select, input, textarea {
         background-image: -ms-linear-gradient(top, lighten($colour-access, 10%), $colour-access);
         background-image: -o-linear-gradient(top, lighten($colour-access, 10%), $colour-access);
         background-image: linear-gradient(to bottom, lighten($colour-access, 10%), $colour-access);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=lighten($colour-access, 10%), endColorstr=$colour-access);
+    }
+
+    &:active {
+        border-color: darken($colour-access, 25%);
+        background-color: darken($colour-access, 10%); background-image: -webkit-gradient(linear, left top, left bottom, from(darken($colour-access, 10%)), to(darken($colour-access, 25%)));
+        background-image: -webkit-linear-gradient(top, darken($colour-access, 10%), darken($colour-access, 25%));
+        background-image: -moz-linear-gradient(top, darken($colour-access, 10%), darken($colour-access, 25%));
+        background-image: -ms-linear-gradient(top, darken($colour-access, 10%), darken($colour-access, 25%));
+        background-image: -o-linear-gradient(top, darken($colour-access, 10%), darken($colour-access, 25%));
+        background-image: linear-gradient(to bottom, darken($colour-access, 10%), darken($colour-access, 25%));filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=darken($colour-access, 10%), endColorstr=darken($colour-access, 25%));
     }
 
     .lt-ie10 &,
