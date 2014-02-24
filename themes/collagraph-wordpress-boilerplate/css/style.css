@@ -1643,6 +1643,14 @@ select:focus, input:focus, textarea:focus {
 }
 
 /* -------------------------------------------------------------------------------
+ * social-share
+ * -------------------------------------------------------------------------------*/
+.social-share {
+  margin-top: 18px;
+  margin-top: 1.125rem;
+}
+
+/* -------------------------------------------------------------------------------
  * collapsible content
  *
  * https://github.com/filamentgroup/jQuery-Collapsible-Content

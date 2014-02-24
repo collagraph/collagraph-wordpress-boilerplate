@@ -13,12 +13,13 @@ add_action('init', 'collagraph_register_menu'); // add collagraph menu
 add_action('init', 'collagraph_create_post_type'); // add our collagraph custom post type
 add_action('widgets_init', 'collagraph_remove_recent_comments_style'); // remove inline recent comment styles from wp_head()
 add_action('init', 'collagraph_wp_pagination'); // add our collagraph pagination
-add_action( 'admin_menu' , 'collagraph_remove_meta_boxes' ); // remove unwated meta boxes
+add_action('admin_menu' , 'collagraph_remove_meta_boxes'); // remove unwated meta boxes
 add_action('acf/register_fields', 'collagraph_register_fields'); // register custom fields
-add_action( 'login_head', 'collagraph_login_head' ); // custom image for login page (112px * 334px)
+add_action('login_head', 'collagraph_login_head'); // custom image for login page (112px * 334px)
 add_action('init', 'collagraph_disable_rich_editing'); // remove visual editor
 add_action('admin_notices', 'collagraph_hide_update_notice_to_all_but_admin_users', 1); // hide admin alerts from non-administrator users
 add_action('admin_menu', 'collagraph_remove_admin_menu_items'); // remove unwanted dashboard menu items
+add_action('wp_dashboard_setup', 'collagraph_remove_dashboard_widgets');
 
 // remove actions
 remove_action('wp_head', 'feed_links_extra', 3); // display the links to the extra feeds such as category feeds
@@ -111,7 +112,7 @@ if (function_exists('add_theme_support')):
     add_image_size('l', 1600, '', true);
     add_image_size('m', 1200, '', true);
     add_image_size('s', 800, '', true);
-    add_image_size('thumbnail', 200, '', true);
+    add_image_size('thumbnail', 254, '', true); // best width for wordpress sidebar
 
     // representative images
     add_image_size('representative-l', 1200, 900, true);
@@ -477,26 +478,66 @@ function collagraph_create_post_type() {
 
 // remove unwated meta boxes
 function collagraph_remove_meta_boxes() {
-    // custom_post
-    remove_meta_box('postexcerpt', 'custom_post', 'normal');
-    remove_meta_box('trackbacksdiv', 'custom_post', 'normal');
-    remove_meta_box('postcustom', 'custom_post', 'normal');
-    remove_meta_box('commentstatusdiv', 'custom_post', 'normal');
-    remove_meta_box('commentsdiv', 'custom_post', 'normal');
-    remove_meta_box('authordiv', 'custom_post', 'normal');
-    remove_meta_box('slugdiv', 'custom_post', 'normal');
-    remove_meta_box('postimagediv', 'custom_post', 'normal');
-    remove_meta_box('trackbacksdiv', 'custom_post', 'normal');
-
-    //page
+    // page
+    // remove_meta_box('submitdiv', 'page', 'normal');
+    remove_meta_box('commentsdiv', 'page', 'normal');
+    remove_meta_box('revisionsdiv', 'page', 'normal');
+    remove_meta_box('authordiv', 'page', 'normal');
+    remove_meta_box('slugdiv', 'page', 'normal');
+    //remove_meta_box('tagsdiv-post_tag', 'page', 'side');
+    //remove_meta_box('categorydiv', 'page', 'side');
+    remove_meta_box('postexcerpt', 'page', 'normal');
+    remove_meta_box('formatdiv', 'page', 'normal');
     remove_meta_box('trackbacksdiv', 'page', 'normal');
     remove_meta_box('postcustom', 'page', 'normal');
     remove_meta_box('commentstatusdiv', 'page', 'normal');
-    remove_meta_box('commentsdiv', 'page', 'normal');
-    remove_meta_box('authordiv', 'page', 'normal');
-    remove_meta_box('slugdiv', 'page', 'normal');
-    remove_meta_box('postimagediv', 'page', 'normal');
-    remove_meta_box('trackbacksdiv', 'page', 'normal');
+    remove_meta_box('postimagediv', 'page', 'side');
+    remove_meta_box('pageparentdiv', 'page', 'side');
+
+    // post
+    // remove_meta_box('submitdiv', 'post', 'normal');
+    remove_meta_box('commentsdiv', 'post', 'normal');
+    remove_meta_box('revisionsdiv', 'post', 'normal');
+    remove_meta_box('authordiv', 'post', 'normal');
+    remove_meta_box('slugdiv', 'post', 'normal');
+    //remove_meta_box('tagsdiv-post_tag', 'post', 'side');
+    //remove_meta_box('categorydiv', 'post', 'side');
+    remove_meta_box('postexcerpt', 'post', 'normal');
+    remove_meta_box('formatdiv', 'post', 'normal');
+    remove_meta_box('trackbacksdiv', 'post', 'normal');
+    remove_meta_box('postcustom', 'post', 'normal');
+    remove_meta_box('commentstatusdiv', 'post', 'normal');
+    remove_meta_box('postimagediv', 'post', 'side');
+    remove_meta_box('pageparentdiv', 'post', 'side');
+
+    // custom_post
+    // remove_meta_box('submitdiv', 'custom_post', 'normal');
+    remove_meta_box('commentsdiv', 'custom_post', 'normal');
+    remove_meta_box('revisionsdiv', 'custom_post', 'normal');
+    remove_meta_box('authordiv', 'custom_post', 'normal');
+    remove_meta_box('slugdiv', 'custom_post', 'normal');
+    //remove_meta_box('tagsdiv-post_tag', 'custom_post', 'side');
+    //remove_meta_box('categorydiv', 'custom_post', 'side');
+    remove_meta_box('postexcerpt', 'custom_post', 'normal');
+    remove_meta_box('formatdiv', 'custom_post', 'normal');
+    remove_meta_box('trackbacksdiv', 'custom_post', 'normal');
+    remove_meta_box('postcustom', 'custom_post', 'normal');
+    remove_meta_box('commentstatusdiv', 'custom_post', 'normal');
+    remove_meta_box('postimagediv', 'custom_post', 'side');
+    remove_meta_box('pageparentdiv', 'custom_post', 'side');
+}
+
+// remove unwanted dashboard widgets
+function collagraph_remove_dashboard_widgets(){
+    remove_meta_box('dashboard_right_now', 'dashboard', 'normal');   // Right Now
+    remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal'); // Recent Comments
+    remove_meta_box('dashboard_incoming_links', 'dashboard', 'normal');  // Incoming Links
+    remove_meta_box('dashboard_plugins', 'dashboard', 'normal');   // Plugins
+    remove_meta_box('dashboard_quick_press', 'dashboard', 'side');  // Quick Press
+    remove_meta_box('dashboard_recent_drafts', 'dashboard', 'side');  // Recent Drafts
+    remove_meta_box('dashboard_primary', 'dashboard', 'side');   // WordPress blog
+    remove_meta_box('dashboard_secondary', 'dashboard', 'side');   // Other WordPress News
+    // use 'dashboard-network' as the second parameter to remove widgets from a network dashboard.
 }
 
 /* -------------------------------------------------------------------------------
