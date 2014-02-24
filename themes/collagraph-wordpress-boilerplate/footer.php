@@ -52,13 +52,13 @@
                     </li>
 
 					<li class="contact-link">
-                        <a href="/contact" title="Contact <?php echo bloginfo('name'); ?>">Contact Us</a>
+                        <a href="/contact" title="Contact <?php echo bloginfo('name'); ?>">Contact us</a>
                     </li>
 
 					<li class="license">&copy; <?php echo bloginfo('name'); ?></li>
 				</ul>
 
-				<a href="http://collagraph.com.au" title="Collagraph, clear design for the web." class="makers-mark">Website by Collagraph</a>
+				<a href="http://collagraph.com.au" title="Collagraph, clear design for the web" class="makers-mark">Website by Collagraph</a>
 			</footer><!-- site-footer -->
 		</div><!-- nav -->
 

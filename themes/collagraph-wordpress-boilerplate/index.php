@@ -15,7 +15,7 @@ get_template_part('header');
     ?>
 
     <?php if ($loop->have_posts()): ?>
-        <h1 class="index-title">Latest Posts</h2>
+        <h1 class="index-title">Latest posts</h2>
 
         <?php while ($loop->have_posts()): $loop->the_post(); ?>
             <?php get_template_part('content') ?>
@@ -42,7 +42,7 @@ get_template_part('header');
                 </article><!-- h-entry post-sub-list -->
             <?php endwhile; // $loop->have_posts() ?>
 
-            <p><a class="to-list" href="/news" title="View more posts">View&nbsp;More&nbsp;Posts&nbsp;&rarr;</a></p>
+            <p><a class="to-list" href="/news" title="View more posts">View&nbsp;more&nbsp;posts&nbsp;&rarr;</a></p>
         <?php endif; // $loop->have_posts() ?>
     <?php else: ?>
         <h2>Sorry, nothing to display.</h2>

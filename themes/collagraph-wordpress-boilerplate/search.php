@@ -8,7 +8,7 @@ get_template_part('header');
 	<header>
 	    <?php get_template_part('searchform'); ?>
 
-		<h1>Search Results for <em class="search-term">&ldquo;<?php echo get_search_query(); ?>&rdquo;</em></h1>
+		<h1>Search results for <em class="search-term">&ldquo;<?php echo get_search_query(); ?>&rdquo;</em></h1>
 	</header>
 
 	<?php get_template_part('loop'); ?>

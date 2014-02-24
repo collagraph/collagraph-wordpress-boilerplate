@@ -5,7 +5,7 @@ get_template_part('header');
 ?>
 
 <section class="primary">
-	<h1>Posts Regarding <?php echo single_cat_title('', false); ?></h1>
+	<h1>Posts regarding <?php echo single_cat_title('', false); ?></h1>
 
 	<?php get_template_part('loop'); ?>
 

@@ -39,13 +39,13 @@ remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
 add_filter('avatar_defaults', 'collagraph_gravatar'); // custom gravatar in settings > discussion
 add_filter('body_class', 'collagraph_add_slug_to_body_class'); // add slug to body class (starkers build)
 add_filter('widget_text', 'collagraph_do_shortcode'); // allow shortcodes in dynamic sidebar
-add_filter('widget_text', 'collagraph_shortcode_unautop'); // remove <p> tags in dynamic sidebars (better!)
+add_filter('widget_text', 'shortcode_unautop'); // remove <p> tags in dynamic sidebars (better!)
 add_filter('wp_nav_menu_args', 'collagraph_wp_nav_menu_args'); // remove surrounding <div> from wp navigation
 add_filter('nav_menu_css_class', 'collagraph_css_attributes_filter', 100, 1); // remove navigation <li> injected classes (commented out by default)
 add_filter('nav_menu_item_id', 'collagraph_css_attributes_filter', 100, 1); // remove navigation <li> injected id (commented out by default)
 add_filter('page_css_class', 'collagraph_css_attributes_filter', 100, 1); // remove navigation <li> page id's (commented out by default)
 add_filter('the_category', 'collagraph_remove_category_rel_from_category_list'); // remove invalid rel attribute
-add_filter('the_excerpt', 'collagraph_shortcode_unautop'); // remove auto <p> tags in excerpt (manual excerpts only)
+add_filter('the_excerpt', 'shortcode_unautop'); // remove auto <p> tags in excerpt (manual excerpts only)
 // add_filter('the_excerpt', 'collagraph_do_shortcode'); // allows shortcodes to be executed in excerpt (manual excerpts only)
 add_filter('excerpt_more', 'collagraph_view_article'); // add 'view article' button instead of [...] for excerpts
 add_filter('style_loader_tag', 'collagraph_style_remove'); // remove 'text/css' from enqueued stylesheet
@@ -112,9 +112,9 @@ if (function_exists('add_theme_support')):
     add_image_size('s', 800, '', true);
 
     // featured images
-    add_image_size('featured-l', 1200, 900, true);
-    add_image_size('featured-m', 800, 600, true);
-    add_image_size('featured-s', 600, 450, true);
+    add_image_size('rep-l', 1200, 900, true);
+    add_image_size('rep-m', 800, 600, true);
+    add_image_size('rep-s', 600, 450, true);
 
     // other images
     add_image_size('thumbnail', 200, '', true);
@@ -129,7 +129,7 @@ add_filter('jpeg_quality', create_function('', 'return 80;'));
  * navigation
  * -------------------------------------------------------------------------------*/
 
-function collagraph_nav($footer_nav) {
+function collagraph_nav() {
     wp_nav_menu(
         array(
             'theme_location' => 'header-menu',
@@ -155,10 +155,10 @@ function collagraph_nav($footer_nav) {
 // register collagraph navigation
 function collagraph_register_menu() {
     register_nav_menus(
-        array(// using array to specify more menus if needed
-            'menu-header' => 'Header Menu', // main navigation
-            'menu-sidebar' => 'Sidebar Menu', // sidebar navigation
-            'menu-extra' => 'Extra Menu' // extra navigation
+        array(
+            'menu-header' => 'Header Menu'// , // main navigation
+            // 'menu-sidebar' => 'Sidebar Menu', // sidebar navigation
+            // 'menu-extra' => 'Extra Menu' // extra navigation
         )
   );
 }

@@ -5,7 +5,7 @@ get_template_part('header');
 ?>
 
 <section class="primary reading">
-	<h1>Page Not Found</h1>
+	<h1>Page not found</h1>
 
 	<p>Sorry, we couldn't find what you were looking for.</p>
 

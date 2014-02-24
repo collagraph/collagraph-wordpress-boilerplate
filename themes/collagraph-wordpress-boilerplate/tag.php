@@ -5,7 +5,7 @@ get_template_part('header');
 ?>
 
 <section class="primary">
-    <h1>Tag Archive: <?php echo single_tag_title('', false); ?> <em class="search-term"><?php echo single_tag_title('', false); ?></em></h1>
+    <h1>Tag archives for <?php echo single_tag_title('', false); ?> <em class="search-term"><?php echo single_tag_title('', false); ?></em></h1>
 
     <?php get_template_part('loop'); ?>
 
