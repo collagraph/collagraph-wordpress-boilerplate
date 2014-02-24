@@ -1,14 +1,18 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class('h-entry main reading'); ?>>
 	<header>
-         <?php $picturefill = get_field('collagraph_representative_image'); ?>
+        <?php
+        global $picturefill;
+
+        $picturefill = get_field('collagraph_representative_image');
+        ?>
 
         <?php if ($picturefill && !is_search()  && !is_archive()): ?>
             <figure class="photo">
-                <?php if (!is_single()): ?>
+                <?php if (!is_single() && !is_page()): ?>
                     <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
                 <?php endif; ?>
                     <?php get_template_part('picturefill'); ?>
-                <?php if (!is_single()): ?>
+                <?php if (!is_single() && !is_page()): ?>
                     </a>
                 <?php endif; ?>
             </figure>
@@ -18,7 +22,7 @@
 			<h2 class="p-name">
 				<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="u-url"><?php the_title(); ?></a>
 			</h2>
-		<?php elseif (is_single()): ?>
+		<?php elseif (is_single() || is_page()): ?>
 			<h1 class="p-name">
 				<?php the_title(); ?>
 			</h1>

@@ -57,6 +57,7 @@ add_filter('login_headerurl', 'collagraph_logo_url'); // change login image link
 add_filter('login_headertitle', 'collagraph_logo_url_title'); // change login image title text
 add_filter('admin_footer_text', 'collagraph_custom_footer_admin'); // custom wordpress footer
 add_filter('attachment_fields_to_edit', 'collagraph_remove_media_upload_fields', 10000, 2); // remove default image sizes from the media uploader
+add_filter('intermediate_image_sizes_advanced', 'collagraph_filter_image_sizes'); // remove default image sizes
 
 // remove filters
 remove_filter('the_excerpt', 'wpautop'); // Remove <p> tags from the excerpt altogether
@@ -99,7 +100,7 @@ function collagraph_styles() {
 }
 
 /* -------------------------------------------------------------------------------
- * theme support
+ * images
  * -------------------------------------------------------------------------------*/
 
 if (function_exists('add_theme_support')):
@@ -110,14 +111,20 @@ if (function_exists('add_theme_support')):
     add_image_size('l', 1600, '', true);
     add_image_size('m', 1200, '', true);
     add_image_size('s', 800, '', true);
-
-    // featured images
-    add_image_size('rep-l', 1200, 900, true);
-    add_image_size('rep-m', 800, 600, true);
-    add_image_size('rep-s', 600, 450, true);
-
-    // other images
     add_image_size('thumbnail', 200, '', true);
+
+    // representative images
+    add_image_size('representative-l', 1200, 900, true);
+    add_image_size('representative-m', 800, 600, true);
+    add_image_size('representative-s', 600, 450, true);
+
+    // update existing image sizes to match
+    update_option('thumbnail_size_w', 200);
+    update_option('thumbnail_size_h', '');
+    update_option('medium_size_w', 1200);
+    update_option('medium_size_h', '');
+    update_option('large_size_w', 1600);
+    update_option('large_size_h', '');
 
     // rss
     add_theme_support('automatic-feed-links'); // enables post and comment rss feed links to head
@@ -576,6 +583,13 @@ function collagraph_remove_media_upload_fields($form_fields, $post) {
     unset($form_fields['image_url']);
     unset($form_fields['align']);
     return $form_fields;
+}
+
+// remove default image sizes
+function collagraph_filter_image_sizes($sizes) {
+    unset($sizes['medium']);
+    unset($sizes['large']);
+    return $sizes;
 }
 
 // increase media uploader upload limit
