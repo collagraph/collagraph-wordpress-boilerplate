@@ -10,6 +10,7 @@ button, input, textarea {
     border-style: solid;
 
     // stop ios rounding corners
+    -webkit-appearance: none;
     appearance: none;
 }
 

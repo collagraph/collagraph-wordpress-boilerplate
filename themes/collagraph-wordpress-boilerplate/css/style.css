@@ -1437,6 +1437,7 @@ form:after {
 
 button, input, textarea {
   border-style: solid;
+  -webkit-appearance: none;
   appearance: none;
 }
 
